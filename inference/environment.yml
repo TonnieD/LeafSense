@@ -1,0 +1,17 @@
+name: leafsense-inference
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+    - fastapi==0.111.0
+    - uvicorn==0.29.0
+    - joblib==1.2.0
+    - scikit-learn==1.2.2
+    - tensorflow==2.16.1
+    - pillow==10.3.0
+    - numpy==1.26.4
+    - pydantic==2.7.1
+    - python-multipart==0.0.9

@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-soil: #3d2b1f;
+  --color-wheat: #c9a84c;
+  --color-sage: #6b7c3f;
+  --color-cream: #faf6ee;
+  --color-terracotta: #c0522a;
+  --color-soil-light: #5c4033;
+  --color-sage-light: #8fa854;
+  --color-cream-dark: #ede8dc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-soil);
+  font-family: "DM Sans", Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+@layer components {
+  /* -------- Buttons -------- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+      bg-soil text-cream font-sans font-semibold text-sm tracking-wide
+      transition-all duration-200 ease-out
+      hover:bg-soil-light hover:shadow-warm-md hover:-translate-y-0.5
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wheat
+      active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed
+      disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+      border-2 border-soil text-soil font-sans font-semibold text-sm tracking-wide
+      transition-all duration-200 ease-out bg-transparent
+      hover:bg-cream-dark hover:shadow-warm hover:-translate-y-0.5
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wheat
+      active:translate-y-0;
+  }
+
+  .btn-wheat {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+      bg-wheat text-soil font-sans font-bold text-sm tracking-wide
+      transition-all duration-200 ease-out
+      hover:bg-wheat-light hover:shadow-warm-md hover:-translate-y-0.5
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-soil
+      active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* -------- Cards -------- */
+  .card {
+    @apply bg-white rounded-2xl shadow-warm p-6 transition-shadow duration-200
+      hover:shadow-warm-md;
+  }
+
+  .card-cream {
+    @apply bg-cream rounded-2xl shadow-warm p-6 border border-cream-dark;
+  }
+
+  /* -------- Inputs -------- */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-cream-dark bg-white
+      text-soil font-sans text-sm placeholder-soil/40
+      focus:outline-none focus:ring-2 focus:ring-wheat focus:border-wheat
+      transition-all duration-150;
+  }
+
+  .textarea-field {
+    @apply w-full px-4 py-3 rounded-xl border border-cream-dark bg-white
+      text-soil font-sans text-sm placeholder-soil/40 resize-y min-h-[140px]
+      focus:outline-none focus:ring-2 focus:ring-wheat focus:border-wheat
+      transition-all duration-150;
+  }
+
+  /* -------- Badges -------- */
+  .badge-healthy {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold
+      bg-sage/15 text-sage border border-sage/30;
+  }
+
+  .badge-disease {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold
+      bg-terracotta/15 text-terracotta border border-terracotta/30;
+  }
+
+  /* -------- Section headings -------- */
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-wheat;
+  }
+
+  /* -------- Divider -------- */
+  .divider {
+    @apply border-t border-cream-dark my-6;
+  }
+}
+
+/* -------- Upload zone -------- */
+.upload-zone {
+  @apply relative flex flex-col items-center justify-center gap-3
+    w-full min-h-[200px] rounded-2xl border-2 border-dashed border-wheat/50
+    bg-white cursor-pointer transition-all duration-200
+    hover:border-wheat hover:bg-cream;
+}
+
+.upload-zone.drag-active {
+  @apply border-sage bg-sage/5 scale-[1.01];
+}
+
+/* -------- Skeleton loader -------- */
+.skeleton {
+  @apply bg-gradient-to-r from-cream-dark via-white to-cream-dark
+    bg-[length:200%_100%] animate-[shimmer_1.4s_ease-in-out_infinite]
+    rounded-xl;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* -------- Progress bar -------- */
+.confidence-bar {
+  @apply h-2 rounded-full bg-cream-dark overflow-hidden;
+}
+
+.confidence-bar-fill {
+  @apply h-full rounded-full bg-gradient-to-r from-sage to-wheat
+    transition-all duration-700 ease-out;
+}
