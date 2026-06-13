@@ -130,7 +130,7 @@ The text classification pipeline uses a Multinomial Naive Bayes classifier with 
 
 ### Training Data
 
-The NLP model was trained on a synthetic dataset (`synthetic_data.csv`) containing approximately one thousand symptom descriptions generated from the PlantVillage class labels. Each row pairs a description with a disease class label. The synthetic approach enables full coverage of all 15 classes while acknowledging the limitation that real-world farmer language may differ from the training distribution.
+The NLP model was trained on a synthetic dataset (`synthetic_data.csv`) containing 1,751 symptom descriptions generated from the PlantVillage class labels. Each row pairs a description with a disease class label. The synthetic approach enables full coverage of all 15 classes while acknowledging the limitation that real-world farmer language may differ from the training distribution.
 
 ### Pesticide Recommendation Lookup
 
@@ -296,9 +296,12 @@ LeafSense/
 
 | Name | Role |
 |---|---|
-| Diana Mayalo | Data Science — Group Seven |
 | Anthony Nganga Chege | Data Science + Production Migration |
-| Group Seven | Data Science Collaborators |
+| Diana Mayalo | Data Science |
+| Aluoch Phanela | Data Science |
+| Lewis Mwaki | Data Science |
+| Margaret Kariuki | Data Science |
 
 **Original project:** Group Seven Data Science Capstone  
 **Production migration:** Anthony Nganga Chege
+

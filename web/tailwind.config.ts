@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        soil: "#3d2b1f",
-        wheat: "#c9a84c",
-        sage: "#6b7c3f",
-        cream: "#faf6ee",
-        terracotta: "#c0522a",
-        "soil-light": "#5c4033",
-        "sage-light": "#8fa854",
-        "wheat-light": "#dfc077",
-        "cream-dark": "#ede8dc",
+        soil: "#f4f1ea",
+        wheat: "#dfc077",
+        sage: "#8fa854",
+        cream: "#121610",
+        terracotta: "#d96a43",
+        "soil-light": "#d1cdc4",
+        "sage-light": "#a4be6a",
+        "wheat-light": "#ebd49a",
+        "cream-dark": "#20271c",
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],

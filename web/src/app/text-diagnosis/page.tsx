@@ -164,11 +164,11 @@ export default function TextDiagnosisPage() {
                     setResult(null);
                     setError(null);
                   }}
-                  className="w-full text-left px-4 py-3 rounded-xl border border-cream-dark bg-white text-sm text-soil/70
-                    hover:border-wheat hover:text-soil hover:bg-cream transition-all duration-150 group"
+                  className="w-full text-left px-4 py-3 rounded-xl border border-cream-dark bg-[#181f15] text-sm text-soil/70
+                    hover:border-sage/40 hover:text-soil hover:bg-sage/5 transition-all duration-150 group"
                   aria-label={`Use example: ${symptom}`}
                 >
-                  <span className="text-wheat font-semibold mr-2 group-hover:text-wheat-light transition-colors">
+                  <span className="text-sage font-semibold mr-2 group-hover:text-sage-light transition-colors">
                     {String(i + 1).padStart(2, "0")}.
                   </span>
                   {symptom}
@@ -241,10 +241,10 @@ export default function TextDiagnosisPage() {
             >
               <div className="p-4 bg-cream-dark rounded-full">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                  <rect x="5" y="4" width="22" height="26" rx="3" stroke="#c9a84c" strokeWidth="2" />
-                  <line x1="10" y1="11" x2="22" y2="11" stroke="#c9a84c" strokeWidth="1.75" strokeLinecap="round" />
-                  <line x1="10" y1="16" x2="22" y2="16" stroke="#c9a84c" strokeWidth="1.75" strokeLinecap="round" />
-                  <line x1="10" y1="21" x2="17" y2="21" stroke="#c9a84c" strokeWidth="1.75" strokeLinecap="round" />
+                  <rect x="5" y="4" width="22" height="26" rx="3" stroke="#6b7c3f" strokeWidth="2" />
+                  <line x1="10" y1="11" x2="22" y2="11" stroke="#6b7c3f" strokeWidth="1.75" strokeLinecap="round" />
+                  <line x1="10" y1="16" x2="22" y2="16" stroke="#6b7c3f" strokeWidth="1.75" strokeLinecap="round" />
+                  <line x1="10" y1="21" x2="17" y2="21" stroke="#6b7c3f" strokeWidth="1.75" strokeLinecap="round" />
                 </svg>
               </div>
               <div>

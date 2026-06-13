@@ -15,8 +15,8 @@ interface PredictionResult {
 // ---- SVG icons (no emoji) ----
 const UploadIcon = () => (
   <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-    <rect x="4" y="4" width="32" height="32" rx="8" stroke="#c9a84c" strokeWidth="2" />
-    <path d="M20 26V14M14 20l6-6 6 6" stroke="#c9a84c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <rect x="4" y="4" width="32" height="32" rx="8" stroke="#6b7c3f" strokeWidth="2" />
+    <path d="M20 26V14M14 20l6-6 6 6" stroke="#6b7c3f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -70,10 +70,28 @@ export default function ImageDiagnosisPage() {
 
   const startCamera = useCallback(async (mode: "environment" | "user" = facingMode) => {
     setCameraError(null);
+
+    // Camera access is blocked by browsers on insecure contexts (HTTP)
+    if (typeof window !== "undefined" && !window.isSecureContext) {
+      setCameraError(
+        "Camera access requires a secure connection (HTTPS). When testing locally on a phone, please use a secure tunnel (e.g. ngrok), or deploy to Vercel (which serves HTTPS by default)."
+      );
+      return;
+    }
+
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: mode, width: { ideal: 1280 }, height: { ideal: 720 } },
-      });
+      let stream: MediaStream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: mode, width: { ideal: 1280 }, height: { ideal: 720 } },
+        });
+      } catch {
+        // Fallback constraint if mobile hardware rejects high resolution spec
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: mode },
+        });
+      }
+
       streamRef.current = stream;
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
@@ -81,7 +99,7 @@ export default function ImageDiagnosisPage() {
       setCameraActive(true);
     } catch {
       setCameraError(
-        "Camera access denied or unavailable. Please allow camera access in your browser settings."
+        "Camera access denied or unavailable. Please allow camera access in your browser and system settings."
       );
     }
   }, [facingMode]);
@@ -223,7 +241,7 @@ export default function ImageDiagnosisPage() {
         <div className="space-y-5">
           {/* Mode toggle */}
           <div
-            className="flex rounded-xl border border-cream-dark bg-white p-1 gap-1"
+            className="flex rounded-xl border border-cream-dark bg-[#181f15] p-1 gap-1"
             role="tablist"
             aria-label="Image input method"
           >
@@ -234,8 +252,8 @@ export default function ImageDiagnosisPage() {
               onClick={() => setInputMode("upload")}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 inputMode === "upload"
-                  ? "bg-soil text-cream shadow-sm"
-                  : "text-soil/60 hover:text-soil hover:bg-cream"
+                  ? "bg-sage text-cream shadow-sm"
+                  : "text-soil/60 hover:text-soil hover:bg-cream-dark"
               }`}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -251,8 +269,8 @@ export default function ImageDiagnosisPage() {
               onClick={() => setInputMode("camera")}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 inputMode === "camera"
-                  ? "bg-soil text-cream shadow-sm"
-                  : "text-soil/60 hover:text-soil hover:bg-cream"
+                  ? "bg-sage text-cream shadow-sm"
+                  : "text-soil/60 hover:text-soil hover:bg-cream-dark"
               }`}
             >
               <CameraIcon size={16} />
@@ -285,7 +303,7 @@ export default function ImageDiagnosisPage() {
                       or click to browse &mdash; JPG, PNG, JPEG
                     </p>
                   </div>
-                  <p className="text-xs text-wheat font-medium">
+                  <p className="text-xs text-sage font-medium">
                     Max 10 MB
                   </p>
                 </div>
@@ -527,8 +545,8 @@ export default function ImageDiagnosisPage() {
             >
               <div className="p-4 bg-cream-dark rounded-full">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                  <circle cx="16" cy="16" r="12" stroke="#c9a84c" strokeWidth="2" />
-                  <path d="M16 10v6M16 20v2" stroke="#c9a84c" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="16" cy="16" r="12" stroke="#6b7c3f" strokeWidth="2" />
+                  <path d="M16 10v6M16 20v2" stroke="#6b7c3f" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
               <div>

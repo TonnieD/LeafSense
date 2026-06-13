@@ -63,7 +63,7 @@ export default function AboutPage() {
         <p className="text-soil/70 leading-relaxed max-w-3xl">
           LeafSense is a deep learning and natural language processing system that
           classifies crop leaf diseases from images and text descriptions. It was
-          developed as a data science capstone project by Group Seven using the
+          developed as a data science capstone project by a team of five developers using the
           PlantVillage dataset and subsequently migrated to a production web
           application. The system provides targeted pesticide recommendations
           alongside each diagnosis, making it a practical tool for farmers,
@@ -405,18 +405,48 @@ export default function AboutPage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[
-            { id: "contributor-diana", name: "Diana Mayalo", role: "Data Science — Group Seven" },
-            { id: "contributor-anthony", name: "Anthony Nganga Chege", role: "Data Science + Production Migration" },
-            { id: "contributor-group", name: "Group Seven", role: "Data Science Collaborators" },
+            { id: "contributor-aluoch", name: "Aluoch Phanela", role: "Data Science" },
+            { 
+              id: "contributor-anthony", 
+              name: "Anthony Nganga Chege", 
+              role: "Data Science + Production Migration",
+              socials: [
+                { type: "linkedin", href: "https://www.linkedin.com/in/anthony-chege-76244124b/", title: "LinkedIn", svg: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> },
+                { type: "email", href: "mailto:ngangaanthony31@gamail.com", title: "Email", svg: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> },
+                { type: "github", href: "https://github.com/TonnieD", title: "GitHub", svg: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> },
+                { type: "whatsapp", href: "https://wa.me/254718308860", title: "WhatsApp", svg: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> }
+              ]
+            },
+            { id: "contributor-diana", name: "Diana Mayalo", role: "Data Science" },
+            { id: "contributor-lewis", name: "Lewis Mwaki", role: "Data Science" },
+            { id: "contributor-margaret", name: "Margaret Kariuki", role: "Data Science" },
           ].map((person) => (
-            <div key={person.id} id={person.id} className="card text-center">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sage to-soil flex items-center justify-center mx-auto mb-3">
-                <span className="text-cream font-serif font-bold text-lg">
-                  {person.name[0]}
-                </span>
+            <div key={person.id} id={person.id} className="card text-center flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sage to-soil flex items-center justify-center mx-auto mb-3">
+                  <span className="text-cream font-serif font-bold text-lg">
+                    {person.name[0]}
+                  </span>
+                </div>
+                <p className="font-serif font-semibold text-soil">{person.name}</p>
+                <p className="text-xs text-soil/55 mt-1">{person.role}</p>
               </div>
-              <p className="font-serif font-semibold text-soil">{person.name}</p>
-              <p className="text-xs text-soil/55 mt-1">{person.role}</p>
+              {"socials" in person && person.socials && (
+                <div className="mt-4 pt-3 border-t border-cream-dark flex justify-center gap-3">
+                  {person.socials.map((s) => (
+                    <a
+                      key={s.type}
+                      href={s.href}
+                      target={s.type !== "email" ? "_blank" : undefined}
+                      rel={s.type !== "email" ? "noopener noreferrer" : undefined}
+                      className="text-soil/40 hover:text-sage transition-colors"
+                      title={s.title}
+                    >
+                      {s.svg}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

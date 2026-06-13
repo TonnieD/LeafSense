@@ -82,17 +82,12 @@ export default function HomePage() {
     <>
       {/* ---- Hero ---- */}
       <section
-        className="relative overflow-hidden bg-gradient-to-br from-soil via-soil-light to-sage py-24 md:py-32"
+        className="relative overflow-hidden bg-cover bg-center py-24 md:py-32"
+        style={{
+          backgroundImage: `linear-gradient(to bottom right, rgba(18, 22, 16, 0.65), rgba(61, 43, 31, 0.45)), url('/hero_background.png')`,
+        }}
         aria-labelledby="hero-heading"
       >
-        {/* Decorative background grain */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-          aria-hidden="true"
-        />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="section-label text-wheat/80 mb-4">
@@ -100,12 +95,16 @@ export default function HomePage() {
           </p>
           <h1
             id="hero-heading"
-            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-cream leading-tight mb-6"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-soil leading-tight mb-6"
+            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.85)" }}
           >
             Detect Crop Disease <br className="hidden sm:block" />
             <span className="text-wheat">Before It Spreads</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-cream/75 text-lg md:text-xl leading-relaxed mb-10 font-sans">
+          <p
+            className="max-w-2xl mx-auto text-soil/90 text-lg md:text-xl leading-relaxed mb-10 font-sans"
+            style={{ textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}
+          >
             LeafSense uses deep learning and natural language processing to identify
             plant diseases from leaf images and field descriptions, giving farmers,
             agronomists, and researchers instant, actionable diagnoses.
@@ -121,7 +120,7 @@ export default function HomePage() {
             <Link
               id="hero-cta-text"
               href="/text-diagnosis"
-              className="btn-secondary border-cream/30 text-cream hover:bg-cream/10 hover:border-cream/50 text-base px-8 py-3.5"
+              className="btn-secondary border-soil/30 text-soil hover:bg-soil/10 hover:border-soil/50 text-base px-8 py-3.5"
             >
               Diagnose from Description
             </Link>
@@ -136,7 +135,7 @@ export default function HomePage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-serif text-3xl font-bold text-wheat">{stat.value}</p>
-                <p className="text-cream/60 text-xs mt-1 font-sans">{stat.label}</p>
+                <p className="text-soil/60 text-xs mt-1 font-sans">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -212,7 +211,7 @@ export default function HomePage() {
       </section>
 
       {/* ---- Audience ---- */}
-      <section className="bg-white border-y border-cream-dark py-16">
+      <section className="bg-[#0c0e0a] border-y border-cream-dark py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="section-label mb-2">Who It Serves</p>
@@ -251,11 +250,47 @@ export default function HomePage() {
       {/* ---- Credits ---- */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <p className="section-label mb-4">Credits</p>
-        <h2 className="font-serif text-2xl font-bold text-soil mb-3">Group Seven</h2>
-        <p className="text-soil/65 text-sm max-w-lg mx-auto leading-relaxed">
-          Developed by Diana Mayalo, Anthony Nganga Chege, and Group Seven collaborators as part of a data science capstone project.
+        <h2 className="font-serif text-2xl font-bold text-soil mb-3">Developers</h2>
+        <p className="text-soil/65 text-sm max-w-lg mx-auto leading-relaxed mb-6">
+          Developed by Aluoch Phanela, Anthony Nganga Chege, Diana Mayalo, Lewis Mwaki, and Margaret Kariuki as part of a data science capstone project.
           Migrated to production by Anthony Nganga Chege.
         </p>
+        <div className="flex justify-center items-center gap-4">
+          <a
+            href="https://www.linkedin.com/in/anthony-chege-76244124b/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full border border-cream-dark text-soil/60 hover:text-sage hover:border-sage transition-all duration-200"
+            title="LinkedIn"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a
+            href="mailto:ngangaanthony31@gamail.com"
+            className="p-2.5 rounded-full border border-cream-dark text-soil/60 hover:text-sage hover:border-sage transition-all duration-200"
+            title="Email"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+          <a
+            href="https://github.com/TonnieD"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full border border-cream-dark text-soil/60 hover:text-sage hover:border-sage transition-all duration-200"
+            title="GitHub"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a
+            href="https://wa.me/254718308860"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full border border-cream-dark text-soil/60 hover:text-sage hover:border-sage transition-all duration-200"
+            title="WhatsApp"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
+        </div>
       </section>
     </>
   );

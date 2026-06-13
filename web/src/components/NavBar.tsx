@@ -15,7 +15,7 @@ export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-cream-dark shadow-warm">
+    <header className="sticky top-0 z-50 bg-[#121610]/95 backdrop-blur-md border-b border-cream-dark shadow-warm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Wordmark */}
@@ -62,7 +62,7 @@ export default function NavBar() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
                     active
                       ? "bg-sage/10 text-sage font-semibold"
-                      : "text-soil/70 hover:text-soil hover:bg-cream"
+                      : "text-soil/70 hover:text-soil hover:bg-cream-dark"
                   }`}
                   aria-current={active ? "page" : undefined}
                 >
@@ -72,7 +72,7 @@ export default function NavBar() {
             })}
             <Link
               href="/image-diagnosis"
-              className="ml-3 btn-wheat text-xs py-2 px-4"
+              className="ml-3 btn-primary text-xs py-2 px-4"
               id="nav-cta-diagnose"
             >
               Diagnose Now
@@ -115,7 +115,7 @@ export default function NavBar() {
       {/* Mobile menu dropdown */}
       {menuOpen && (
         <nav
-          className="md:hidden border-t border-cream-dark bg-white px-4 pb-4 pt-2 animate-fade-in"
+          className="md:hidden border-t border-cream-dark bg-[#121610] px-4 pb-4 pt-2 animate-fade-in"
           aria-label="Mobile navigation"
         >
           {links.map((link) => {
@@ -128,7 +128,7 @@ export default function NavBar() {
                 className={`block px-3 py-2.5 rounded-lg text-sm font-medium my-0.5 transition-all ${
                   active
                     ? "bg-sage/10 text-sage font-semibold"
-                    : "text-soil/70 hover:text-soil hover:bg-cream"
+                    : "text-soil/70 hover:text-soil hover:bg-cream-dark"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
@@ -139,7 +139,7 @@ export default function NavBar() {
           <Link
             href="/image-diagnosis"
             onClick={() => setMenuOpen(false)}
-            className="btn-wheat w-full mt-3 text-sm"
+            className="btn-primary w-full mt-3 text-sm"
           >
             Diagnose Now
           </Link>

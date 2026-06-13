@@ -41,7 +41,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen bg-cream text-soil font-sans">
         <NavBar />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-cream-dark bg-white py-8 mt-16">
+        <footer className="border-t border-cream-dark bg-[#0c0e0a] py-8 mt-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
@@ -51,7 +51,7 @@ export default function RootLayout({
                 </p>
               </div>
               <div className="text-xs text-soil/50 space-y-1 md:text-right">
-                <p>Developed by Group Seven &mdash; Diana Mayalo, Anthony Nganga Chege, and collaborators.</p>
+                <p>Developed by Aluoch Phanela, Anthony Nganga Chege, Diana Mayalo, Lewis Mwaki, and Margaret Kariuki.</p>
                 <p>Production migration by Anthony Nganga Chege.</p>
                 <p className="mt-2 text-soil/30">
                   CNN + NLP &bull; PlantVillage Dataset &bull; 15 Disease Classes

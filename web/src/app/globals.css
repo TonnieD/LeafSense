@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --color-soil: #3d2b1f;
-  --color-wheat: #c9a84c;
-  --color-sage: #6b7c3f;
-  --color-cream: #faf6ee;
-  --color-terracotta: #c0522a;
-  --color-soil-light: #5c4033;
-  --color-sage-light: #8fa854;
-  --color-cream-dark: #ede8dc;
+  --color-soil: #f4f1ea;
+  --color-wheat: #dfc077;
+  --color-sage: #8fa854;
+  --color-cream: #121610;
+  --color-terracotta: #d96a43;
+  --color-soil-light: #d1cdc4;
+  --color-sage-light: #a4be6a;
+  --color-cream-dark: #20271c;
 }
 
 * {
@@ -44,10 +44,10 @@ body {
   /* -------- Buttons -------- */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
-      bg-soil text-cream font-sans font-semibold text-sm tracking-wide
+      bg-sage text-cream font-sans font-semibold text-sm tracking-wide
       transition-all duration-200 ease-out
-      hover:bg-soil-light hover:shadow-warm-md hover:-translate-y-0.5
-      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wheat
+      hover:bg-sage-light hover:shadow-warm-md hover:-translate-y-0.5
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-light
       active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed
       disabled:hover:translate-y-0 disabled:hover:shadow-none;
   }
@@ -72,24 +72,25 @@ body {
 
   /* -------- Cards -------- */
   .card {
-    @apply bg-white rounded-2xl shadow-warm p-6 transition-shadow duration-200
-      hover:shadow-warm-md;
+    @apply bg-[#181f15] rounded-2xl shadow-warm p-6 transition-all duration-300
+      hover:shadow-warm-md border border-transparent hover:border-sage/20;
   }
 
   .card-cream {
-    @apply bg-cream rounded-2xl shadow-warm p-6 border border-cream-dark;
+    @apply bg-[#20271c]/45 rounded-2xl shadow-warm p-6 border border-cream-dark transition-all duration-300
+      hover:border-sage/30;
   }
 
   /* -------- Inputs -------- */
   .input-field {
-    @apply w-full px-4 py-3 rounded-xl border border-cream-dark bg-white
+    @apply w-full px-4 py-3 rounded-xl border border-cream-dark bg-[#181f15]
       text-soil font-sans text-sm placeholder-soil/40
       focus:outline-none focus:ring-2 focus:ring-wheat focus:border-wheat
       transition-all duration-150;
   }
 
   .textarea-field {
-    @apply w-full px-4 py-3 rounded-xl border border-cream-dark bg-white
+    @apply w-full px-4 py-3 rounded-xl border border-cream-dark bg-[#181f15]
       text-soil font-sans text-sm placeholder-soil/40 resize-y min-h-[140px]
       focus:outline-none focus:ring-2 focus:ring-wheat focus:border-wheat
       transition-all duration-150;
@@ -121,8 +122,8 @@ body {
 .upload-zone {
   @apply relative flex flex-col items-center justify-center gap-3
     w-full min-h-[200px] rounded-2xl border-2 border-dashed border-wheat/50
-    bg-white cursor-pointer transition-all duration-200
-    hover:border-wheat hover:bg-cream;
+    bg-[#181f15] cursor-pointer transition-all duration-200
+    hover:border-sage hover:bg-sage/5;
 }
 
 .upload-zone.drag-active {
