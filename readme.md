@@ -304,4 +304,3 @@ LeafSense/
 
 **Original project:** Group Seven Data Science Capstone  
 **Production migration:** Anthony Nganga Chege
-
