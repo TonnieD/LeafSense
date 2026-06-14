@@ -52,9 +52,17 @@ export default function ImageDiagnosisPage() {
   const [capturedFromCamera, setCapturedFromCamera] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+
+  const videoCallbackRef = useCallback((node: HTMLVideoElement | null) => {
+    videoRef.current = node;
+    if (node && streamRef.current) {
+      node.srcObject = streamRef.current;
+      node.play().catch((err) => console.error("Error playing video:", err));
+    }
+  }, []);
 
   const API_URL =
     process.env.NEXT_PUBLIC_INFERENCE_API_URL ?? "http://localhost:8000";
@@ -314,7 +322,7 @@ export default function ImageDiagnosisPage() {
                     id="image-preview"
                     src={imagePreview}
                     alt="Uploaded leaf for diagnosis"
-                    className="w-full object-cover max-h-[380px]"
+                    className="w-full object-cover h-56 sm:h-72 md:h-96"
                   />
                   <button
                     id="btn-remove-image"
@@ -362,7 +370,7 @@ export default function ImageDiagnosisPage() {
                       id="camera-capture-preview"
                       src={imagePreview}
                       alt="Captured photo for diagnosis"
-                      className="w-full object-cover max-h-[380px]"
+                      className="w-full object-cover h-56 sm:h-72 md:h-96"
                     />
                     <div className="absolute top-3 left-3 bg-sage text-cream text-xs font-semibold px-2.5 py-1 rounded-full">
                       Photo captured
@@ -401,12 +409,12 @@ export default function ImageDiagnosisPage() {
                   ) : (
                     <div className="relative rounded-2xl overflow-hidden border border-cream-dark shadow-warm bg-black">
                       <video
-                        ref={videoRef}
+                        ref={videoCallbackRef}
                         id="camera-viewfinder"
                         autoPlay
                         playsInline
                         muted
-                        className="w-full max-h-[380px] object-cover"
+                        className="w-full h-56 sm:h-72 md:h-96 object-cover"
                         aria-label="Camera viewfinder"
                       />
                       {/* Crosshair overlay */}
@@ -458,27 +466,25 @@ export default function ImageDiagnosisPage() {
           )}
 
           {/* ---- Analyse button ---- */}
-          {imagePreview && (
-            <button
-              id="btn-analyse-image"
-              onClick={analyse}
-              disabled={loading || !imageFile}
-              className="btn-primary w-full text-base py-3.5"
-              aria-busy={loading}
-            >
-              {loading ? (
-                <>
-                  <span
-                    className="inline-block w-4 h-4 border-2 border-cream/30 border-t-cream rounded-full animate-spin"
-                    aria-hidden="true"
-                  />
-                  Analysing...
-                </>
-              ) : (
-                "Analyse Image"
-              )}
-            </button>
-          )}
+          <button
+            id="btn-analyse-image"
+            onClick={analyse}
+            disabled={loading || !imageFile}
+            className="btn-primary w-full text-base py-3.5"
+            aria-busy={loading}
+          >
+            {loading ? (
+              <>
+                <span
+                  className="inline-block w-4 h-4 border-2 border-cream/30 border-t-cream rounded-full animate-spin"
+                  aria-hidden="true"
+                />
+                Analysing...
+              </>
+            ) : (
+              "Analyse Image"
+            )}
+          </button>
         </div>
 
         {/* ---- RIGHT: Results Panel ---- */}
